@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "ICCity.h"
+#import "ICForecastItem.h"
 
 @interface ICForecast : NSObject
 
 @property (nonatomic, strong) ICCity *city;
-@property (nonatomic, strong) NSArray<NSString *> *list;
+@property (nonatomic, strong) NSArray<ICForecastItem *> *list;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

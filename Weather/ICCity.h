@@ -15,4 +15,6 @@
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *countryCode;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

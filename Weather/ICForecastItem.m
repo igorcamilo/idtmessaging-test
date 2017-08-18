@@ -10,4 +10,16 @@
 
 @implementation ICForecastItem
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.date = [[NSDate alloc] initWithTimeIntervalSince1970:[dictionary[@"dt"] doubleValue]];
+        NSDictionary *main = dictionary[@"main"];
+        if (main) {
+            self.temperature = [[NSMeasurement alloc] initWithDoubleValue:[main[@"temp"] doubleValue] unit:NSUnitTemperature.kelvin];
+        }
+    }
+    return self;
+}
+
 @end
