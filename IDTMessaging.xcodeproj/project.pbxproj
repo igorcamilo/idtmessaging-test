@@ -93,7 +93,9 @@
 		4B173DEE1F473FFA002B44EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = IC;
 				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Igor Camilo";
 				TargetAttributes = {
 					4B173DF71F47403E002B44EC = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -253,6 +255,7 @@
 				4B173DFF1F47403E002B44EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

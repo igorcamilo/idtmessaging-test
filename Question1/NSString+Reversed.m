@@ -18,7 +18,9 @@
 - (NSMutableString *)mutableReversed {
     NSMutableString *mutable = [[NSMutableString alloc] initWithCapacity:self.length];
     [self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationByComposedCharacterSequences|NSStringEnumerationReverse usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-        [mutable appendString:substring];
+        if (substring) {
+            [mutable appendString:substring];
+        }
     }];
     return mutable;
 }
