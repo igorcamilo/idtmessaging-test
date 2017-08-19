@@ -23,6 +23,10 @@
     self.viewModel.delegate = self;
     [self.refreshControl beginRefreshing];
     [self.refreshControl addTarget:self.viewModel action:@selector(update) forControlEvents:UIControlEventValueChanged];
+    // Fix for hidden refresh control
+    CGPoint offset = self.tableView.contentOffset;
+    offset.y -= 44;
+    self.tableView.contentOffset = offset;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,6 +61,18 @@
 
 - (void)forecastTableViewModel:(ICForecastTableViewModel *)ftvm updateDidFailWithError:(NSError *)error {
     [self.refreshControl endRefreshing];
+    
+    // Check if there is already an alert on screen
+    if (self.presentedViewController) {
+        return;
+    }
+    
+    // Fix for presenting alert during a pull to refresh
+    [self.tableView setContentOffset:CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
+    self.tableView.scrollEnabled = NO;
+    self.tableView.scrollEnabled = YES;
+    
+    // Present error alert
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"An error occurred. Try again?", nil) message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.refreshControl beginRefreshing];

@@ -1,0 +1,9 @@
+/* Class = "UINavigationItem"; title = "Weather"; ObjectID = "0Em-a9-JS1"; */
+"0Em-a9-JS1.title" = "Tempo";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "KI4-oM-G69"; */
+"KI4-oM-G69.text" = "Título";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Zrd-hF-DNN"; */
+"Zrd-hF-DNN.text" = "Detalhe";
+

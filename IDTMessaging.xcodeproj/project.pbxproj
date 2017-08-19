@@ -17,6 +17,8 @@
 		4B450BA51F4756E500C9595A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B450BA41F4756E500C9595A /* Assets.xcassets */; };
 		4B450BA81F4756E500C9595A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B450BA61F4756E500C9595A /* LaunchScreen.storyboard */; };
 		4B450BAF1F47578900C9595A /* ICForecastContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B450BAE1F47578900C9595A /* ICForecastContainer.m */; };
+		4B751F1B1F48617A00BDCFCF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B751F1D1F48617A00BDCFCF /* InfoPlist.strings */; };
+		4B751F201F48617B00BDCFCF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B751F221F48617B00BDCFCF /* Localizable.strings */; };
 		4B9962721F4788EF00C97388 /* ICForecastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9962711F4788EF00C97388 /* ICForecastTableViewController.m */; };
 		4B9962751F47945A00C97388 /* ICForecastTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9962741F47945A00C97388 /* ICForecastTableViewModel.m */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,14 @@
 		4B450BA91F4756E500C9595A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B450BAD1F47578900C9595A /* ICForecastContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICForecastContainer.h; sourceTree = "<group>"; };
 		4B450BAE1F47578900C9595A /* ICForecastContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICForecastContainer.m; sourceTree = "<group>"; };
+		4B751F151F485EE400BDCFCF /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Main.strings; sourceTree = "<group>"; };
+		4B751F161F485EE400BDCFCF /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4B751F171F485F1800BDCFCF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		4B751F181F485F1800BDCFCF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		4B751F1C1F48617A00BDCFCF /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4B751F211F48617B00BDCFCF /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B751F231F48618D00BDCFCF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4B751F241F48618D00BDCFCF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4B9962701F4788EF00C97388 /* ICForecastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICForecastTableViewController.h; sourceTree = "<group>"; };
 		4B9962711F4788EF00C97388 /* ICForecastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICForecastTableViewController.m; sourceTree = "<group>"; };
 		4B9962731F47945A00C97388 /* ICForecastTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICForecastTableViewModel.h; sourceTree = "<group>"; };
@@ -107,6 +117,8 @@
 		4B450B971F4756E500C9595A /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				4B751F221F48617B00BDCFCF /* Localizable.strings */,
+				4B751F1D1F48617A00BDCFCF /* InfoPlist.strings */,
 				4B450B9B1F4756E500C9595A /* ICAppDelegate.h */,
 				4B450B9C1F4756E500C9595A /* ICAppDelegate.m */,
 				4B9962701F4788EF00C97388 /* ICForecastTableViewController.h */,
@@ -189,6 +201,7 @@
 					};
 					4B450B951F4756E500C9595A = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 2CPJD7ENY9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -217,7 +230,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B751F201F48617B00BDCFCF /* Localizable.strings in Resources */,
 				4B450BA81F4756E500C9595A /* LaunchScreen.storyboard in Resources */,
+				4B751F1B1F48617A00BDCFCF /* InfoPlist.strings in Resources */,
 				4B450BA51F4756E500C9595A /* Assets.xcassets in Resources */,
 				4B450BA31F4756E500C9595A /* Main.storyboard in Resources */,
 			);
@@ -256,6 +271,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B450BA21F4756E500C9595A /* Base */,
+				4B751F151F485EE400BDCFCF /* fi */,
+				4B751F171F485F1800BDCFCF /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -264,8 +281,28 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B450BA71F4756E500C9595A /* Base */,
+				4B751F161F485EE400BDCFCF /* fi */,
+				4B751F181F485F1800BDCFCF /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4B751F1D1F48617A00BDCFCF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B751F1C1F48617A00BDCFCF /* fi */,
+				4B751F231F48618D00BDCFCF /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4B751F221F48617B00BDCFCF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B751F211F48617B00BDCFCF /* fi */,
+				4B751F241F48618D00BDCFCF /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -274,12 +311,14 @@
 		4B173DF21F473FFA002B44EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Debug;
 		};
 		4B173DF31F473FFA002B44EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Release;
 		};
@@ -400,6 +439,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2CPJD7ENY9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -454,6 +494,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2CPJD7ENY9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

@@ -16,7 +16,7 @@
         
         // Formatters
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateStyle = NSDateFormatterShortStyle;
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         dateFormatter.timeStyle = NSDateFormatterShortStyle;
         NSMeasurementFormatter *measurementFormatter = [[NSMeasurementFormatter alloc] init];
         NSNumberFormatter *percentNumberFormatter = [[NSNumberFormatter alloc] init];
