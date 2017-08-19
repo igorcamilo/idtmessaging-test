@@ -82,6 +82,8 @@
 		4BA154601F486744004C9726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BA154631F486744004C9726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BA154651F486744004C9726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BE8A26B1F486BF500355B9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4BE8A26C1F48748300355B9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		4B173DFA1F47403E002B44EC /* Question1 */ = {
 			isa = PBXGroup;
 			children = (
+				4BE8A26C1F48748300355B9A /* README.md */,
 				4B173DFB1F47403E002B44EC /* main.m */,
 				4B173E001F474120002B44EC /* NSString+Reversed.h */,
 				4B173E011F474120002B44EC /* NSString+Reversed.m */,
@@ -176,6 +179,7 @@
 		4BA154531F486744004C9726 /* Question2 */ = {
 			isa = PBXGroup;
 			children = (
+				4BE8A26B1F486BF500355B9A /* README.md */,
 				4BA154571F486744004C9726 /* AppDelegate.h */,
 				4BA154581F486744004C9726 /* AppDelegate.m */,
 				4BA1545A1F486744004C9726 /* ViewController.h */,
@@ -762,6 +766,7 @@
 				4BA154671F486744004C9726 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
