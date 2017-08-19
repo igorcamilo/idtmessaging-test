@@ -26,7 +26,16 @@
     }
     
     self.downloading = YES;
-    [[[NSURLSession sharedSession] dataTaskWithURL:[[NSURL alloc] initWithString:@"https://api.openweathermap.org/data/2.5/forecast?lat=-35&lon=-19&lang=fi"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    // Building the URL
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:@"https://api.openweathermap.org/data/2.5/forecast"];
+    NSURLQueryItem *latQuery = [NSURLQueryItem queryItemWithName:@"lat" value:@"-35"];
+    NSURLQueryItem *lonQuery = [NSURLQueryItem queryItemWithName:@"lon" value:@"-19"];
+    NSURLQueryItem *langQuery = [NSURLQueryItem queryItemWithName:@"lang" value:[NSLocale currentLocale].languageCode];
+    NSURLQueryItem *appidQuery = [NSURLQueryItem queryItemWithName:@"appid" value:<#API Key#>];
+    urlComponents.queryItems = @[latQuery, lonQuery, langQuery, appidQuery];
+    NSLog(@"%@", urlComponents.URL);
+    // Making the request
+    [[[NSURLSession sharedSession] dataTaskWithURL:urlComponents.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         self.downloading = NO;
         
         if (error) {
