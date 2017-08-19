@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ICForecastItem.h"
+#import "ICForecast.h"
 
-@interface ICForecast : NSObject
+@interface ICForecastContainer : NSObject
 
-@property (nonatomic, copy) NSString *dateString;
-@property (nonatomic, strong) NSArray<ICForecastItem *> *items;
+@property (nonatomic, strong) NSArray<ICForecast *> *list;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
