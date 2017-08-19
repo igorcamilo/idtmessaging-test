@@ -62,7 +62,7 @@
     NSURLQueryItem *latQuery = [NSURLQueryItem queryItemWithName:@"lat" value:[NSString stringWithFormat:@"%f", coordinate.latitude]];
     NSURLQueryItem *lonQuery = [NSURLQueryItem queryItemWithName:@"lon" value:[NSString stringWithFormat:@"%f", coordinate.longitude]];
     NSURLQueryItem *langQuery = [NSURLQueryItem queryItemWithName:@"lang" value:[NSLocale currentLocale].languageCode];
-    NSURLQueryItem *appidQuery = [NSURLQueryItem queryItemWithName:@"appid" value:<#API Key#>];
+    NSURLQueryItem *appidQuery = [NSURLQueryItem queryItemWithName:@"appid" value:@"4d5933546c48874e00a2a70dfd07a4d3"];
     urlComponents.queryItems = @[latQuery, lonQuery, langQuery, appidQuery];
     // Making the request
     [[[NSURLSession sharedSession] dataTaskWithURL:urlComponents.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
