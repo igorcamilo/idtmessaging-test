@@ -7,4 +7,5 @@ __Make an app that pulls weather forecast data for the user's current location, 
 - Written in Objective-C
 - No third party software
 - MVVM design pattern
+- Localized in English, Finnish and Brazilian Portuguese
 - Please, insert app key in `ICForecastTableViewModel`
