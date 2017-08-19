@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Forecast Table View Controller-->
+        <!--Weather-->
         <scene sceneID="gEv-Ag-4WR">
             <objects>
                 <tableViewController id="Qt4-rp-wol" customClass="ICForecastTableViewController" sceneMemberID="viewController">
@@ -48,7 +48,10 @@
                             <outlet property="delegate" destination="Qt4-rp-wol" id="7f4-CU-8Sw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0Em-a9-JS1"/>
+                    <navigationItem key="navigationItem" title="Weather" id="0Em-a9-JS1"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="STt-fL-OwZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sh-Jc-IQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -21,6 +21,8 @@
     [super viewDidLoad];
     self.viewModel = [[ICForecastTableViewModel alloc] init];
     self.viewModel.delegate = self;
+    [self.refreshControl beginRefreshing];
+    [self.refreshControl addTarget:self.viewModel action:@selector(update) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,11 +51,19 @@
 }
 
 - (void)forecastTableViewModelUpdateDidSucceed:(ICForecastTableViewModel *)ftvm {
+    [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
 
 - (void)forecastTableViewModel:(ICForecastTableViewModel *)ftvm updateDidFailWithError:(NSError *)error {
-    
+    [self.refreshControl endRefreshing];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"An error occurred. Try again?", nil) message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.refreshControl beginRefreshing];
+        [self.viewModel update];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

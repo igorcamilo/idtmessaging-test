@@ -9,17 +9,48 @@
 #import "ICForecastTableViewModel.h"
 #import "ICForecastContainer.h"
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ICForecastTableViewModel ()
+@interface ICForecastTableViewModel () <CLLocationManagerDelegate>
 
 @property (nonatomic, getter=isDownloading) BOOL downloading;
 @property (nonatomic, strong) NSArray<ICForecast *> *forecastList;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
 @implementation ICForecastTableViewModel
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.downloading = NO;
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+    }
+    return self;
+}
+
 - (void)update {
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    switch (status) {
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        case kCLAuthorizationStatusAuthorizedAlways:
+            [self.locationManager requestLocation];
+            break;
+            
+        case kCLAuthorizationStatusNotDetermined:
+            [self.locationManager requestWhenInUseAuthorization];
+            break;
+            
+        default:
+            [self.delegate forecastTableViewModel:self updateDidFailWithError:[NSError errorWithDomain:kCLErrorDomain code:status userInfo:@{NSLocalizedDescriptionKey: @"Can't get user location"}]];
+            break;
+    }
+}
+
+- (void)downloadForecastInfoForCoordinate:(CLLocationCoordinate2D)coordinate {
     
     if (self.isDownloading) {
         return;
@@ -28,12 +59,11 @@
     self.downloading = YES;
     // Building the URL
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:@"https://api.openweathermap.org/data/2.5/forecast"];
-    NSURLQueryItem *latQuery = [NSURLQueryItem queryItemWithName:@"lat" value:@"-35"];
-    NSURLQueryItem *lonQuery = [NSURLQueryItem queryItemWithName:@"lon" value:@"-19"];
+    NSURLQueryItem *latQuery = [NSURLQueryItem queryItemWithName:@"lat" value:[NSString stringWithFormat:@"%f", coordinate.latitude]];
+    NSURLQueryItem *lonQuery = [NSURLQueryItem queryItemWithName:@"lon" value:[NSString stringWithFormat:@"%f", coordinate.longitude]];
     NSURLQueryItem *langQuery = [NSURLQueryItem queryItemWithName:@"lang" value:[NSLocale currentLocale].languageCode];
     NSURLQueryItem *appidQuery = [NSURLQueryItem queryItemWithName:@"appid" value:<#API Key#>];
     urlComponents.queryItems = @[latQuery, lonQuery, langQuery, appidQuery];
-    NSLog(@"%@", urlComponents.URL);
     // Making the request
     [[[NSURLSession sharedSession] dataTaskWithURL:urlComponents.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         self.downloading = NO;
@@ -69,6 +99,26 @@
 
 - (ICForecastItem *)forecastItemForIndexPath:(NSIndexPath *)indexPath {
     return self.forecastList[indexPath.section].items[indexPath.row];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        case kCLAuthorizationStatusAuthorizedAlways:
+            [self.locationManager requestLocation];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    [self downloadForecastInfoForCoordinate:locations.lastObject.coordinate];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    [self.delegate forecastTableViewModel:self updateDidFailWithError:error];
 }
 
 @end
