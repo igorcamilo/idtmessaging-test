@@ -29,6 +29,8 @@
 
 - (NSInteger)numberOfRowsForSection:(NSInteger)section;
 
+- (NSString *)titleForSection:(NSInteger)section;
+
 - (ICForecastItem *)forecastItemForIndexPath:(NSIndexPath *)indexPath;
 
 @end

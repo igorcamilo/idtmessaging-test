@@ -54,6 +54,10 @@
     return self.forecastList[section].items.count;
 }
 
+- (NSString *)titleForSection:(NSInteger)section {
+    return self.forecastList[section].dateString;
+}
+
 - (ICForecastItem *)forecastItemForIndexPath:(NSIndexPath *)indexPath {
     return self.forecastList[indexPath.section].items[indexPath.row];
 }

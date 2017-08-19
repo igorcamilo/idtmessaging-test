@@ -14,9 +14,21 @@
     self = [super init];
     if (self) {
         
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateStyle = NSDateFormatterShortStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
         NSMeasurementFormatter *measurementFormatter = [[NSMeasurementFormatter alloc] init];
+        NSNumberFormatter *percentNumberFormatter = [[NSNumberFormatter alloc] init];
+        percentNumberFormatter.numberStyle = NSNumberFormatterPercentStyle;
+        
+        self.dateString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[dictionary[@"dt"] doubleValue]]];
         
         NSMutableArray<ICForecastItem *> *items = [NSMutableArray array];
+        
+        NSString *weather = [dictionary[@"weather"] firstObject][@"description"];
+        if (weather) {
+            [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Weather", nil) valueText:weather]];
+        }
         
         NSDictionary *main = dictionary[@"main"];
         if (main) {
@@ -31,42 +43,49 @@
                 [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Maximum temperature", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[tempMax doubleValue] unit:NSUnitTemperature.kelvin]]]];
             }
             
+            NSNumber *tempMin = main[@"temp_min"];
+            if (tempMin) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Minimum temperature", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[tempMin doubleValue] unit:NSUnitTemperature.kelvin]]]];
+            }
             
+            NSNumber *pressure = main[@"pressure"];
+            if (pressure) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Pressure", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[pressure doubleValue] unit:NSUnitPressure.hectopascals]]]];
+            }
             
-//            self.temperature = [[NSMeasurement alloc] initWithDoubleValue:[ doubleValue] unit:NSUnitTemperature.kelvin];
-//            self.maxTemperature = [[NSMeasurement alloc] initWithDoubleValue:[main[@""] doubleValue] unit:NSUnitTemperature.kelvin];
-//            self.minTemperature = [[NSMeasurement alloc] initWithDoubleValue:[main[@"temp_min"] doubleValue] unit:NSUnitTemperature.kelvin];
-//            self.pressure = [[NSMeasurement alloc] initWithDoubleValue:[main[@"pressure"] doubleValue] unit:NSUnitPressure.hectopascals];
-//            self.seaPressure = [[NSMeasurement alloc] initWithDoubleValue:[main[@"sea_level"] doubleValue] unit:NSUnitPressure.hectopascals];
-//            self.groundPressure = [[NSMeasurement alloc] initWithDoubleValue:[main[@"grnd_level"] doubleValue] unit:NSUnitPressure.hectopascals];
-//            self.humidity = @([main[@"humidity"] doubleValue] / 100);
+            NSNumber *seaPressure = main[@"sea_level"];
+            if (seaPressure) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Sea level pressure", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[seaPressure doubleValue] unit:NSUnitPressure.hectopascals]]]];
+            }
+            
+            NSNumber *groundPressure = main[@"grnd_level"];
+            if (groundPressure) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Ground level pressure", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[groundPressure doubleValue] unit:NSUnitPressure.hectopascals]]]];
+            }
+            
+            NSNumber *humidity = main[@"humidity"];
+            if (humidity) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Humidity", nil) valueText:[percentNumberFormatter stringFromNumber:@([humidity doubleValue] / 100)]]];
+            }
         }
+        
+        NSNumber *cloudiness = dictionary[@"clouds"][@"all"];
+        if (cloudiness) {
+            [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Cloudiness", nil) valueText:[percentNumberFormatter stringFromNumber:@([cloudiness doubleValue] / 100)]]];
+        }
+        
+        NSDictionary *wind = dictionary[@"wind"];
+        if (wind) {
+            
+            NSNumber *windSpeed = wind[@"speed"];
+            if (windSpeed) {
+                [items addObject:[[ICForecastItem alloc] initWithLabelText:NSLocalizedString(@"Wind speed", nil) valueText:[measurementFormatter stringFromMeasurement:[[NSMeasurement alloc] initWithDoubleValue:[windSpeed doubleValue] unit:NSUnitSpeed.metersPerSecond]]]];
+            }
+        }
+        
         self.items = items;
     }
     return self;
 }
 
 @end
-
-//- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-//    self = [super init];
-//    if (self) {
-//        self.date = [[NSDate alloc] initWithTimeIntervalSince1970:[dictionary[@"dt"] doubleValue]];
-//
-//        self.cloudiness = @([dictionary[@"clouds"][@"all"] doubleValue] / 100);
-//        NSDictionary *wind = dictionary[@"wind"];
-//        if (wind) {
-//            self.windSpeed = [[NSMeasurement alloc] initWithDoubleValue:[wind[@"speed"] doubleValue] unit:NSUnitSpeed.metersPerSecond];
-//            self.windDegrees = [[NSMeasurement alloc] initWithDoubleValue:[wind[@"deg"] doubleValue] unit:NSUnitAngle.degrees];
-//        }
-//        NSNumber *rain = dictionary[@"rain"][@"3h"];
-//        if (rain) {
-//            self.rain = [[NSMeasurement alloc] initWithDoubleValue:[rain doubleValue] unit:NSUnitLength.millimeters];
-//        }
-//        NSNumber *snow = dictionary[@"snow"][@"3h"];
-//        if (snow) {
-//            self.snow = [[NSMeasurement alloc] initWithDoubleValue:[rain doubleValue] unit:NSUnitLength.millimeters];
-//        }
-//    }
-//    return self;
-//}
