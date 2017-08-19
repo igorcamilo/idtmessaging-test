@@ -3,6 +3,7 @@
 __Write a function which takes a string as argument and returns the string reversed. For example, "abcdef" becomes "fedcba". Do not use the reverse method. Does it work with emojis?__
 
 ## Answer
+
 ```
 - (NSMutableString *)mutableReversed {
     NSMutableString *mutable = [[NSMutableString alloc] initWithCapacity:self.length];

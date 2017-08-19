@@ -34,6 +34,8 @@
     [self.viewModel update];
 }
 
+#pragma mark UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.viewModel.numberOfSections;
 }
@@ -53,6 +55,8 @@
     cell.detailTextLabel.text = item.valueText;
     return cell;
 }
+
+#pragma mark ICForecastTableViewModelDelegate
 
 - (void)forecastTableViewModelUpdateDidSucceed:(ICForecastTableViewModel *)ftvm {
     [self.refreshControl endRefreshing];

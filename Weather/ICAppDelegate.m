@@ -8,10 +8,6 @@
 
 #import "ICAppDelegate.h"
 
-@interface ICAppDelegate ()
-
-@end
-
 @implementation ICAppDelegate
 
 @end

@@ -25,7 +25,7 @@
         self.dateString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[dictionary[@"dt"] doubleValue]]];
         
         // I'm storing the values in an array istead of instance properties because this way
-        // is easier to display on a UITableView.
+        // is easier to display in a UITableView.
         
         NSMutableArray<ICForecastItem *> *items = [NSMutableArray array];
         

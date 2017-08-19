@@ -82,6 +82,8 @@
 		4BA154601F486744004C9726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BA154631F486744004C9726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BA154651F486744004C9726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BB081241F487ACD0091B8CA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4BB081251F487BDC0091B8CA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4BE8A26B1F486BF500355B9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4BE8A26C1F48748300355B9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 		4B173DED1F473FFA002B44EC = {
 			isa = PBXGroup;
 			children = (
+				4BB081251F487BDC0091B8CA /* README.md */,
 				4B173DFA1F47403E002B44EC /* Question1 */,
 				4BA154531F486744004C9726 /* Question2 */,
 				4B450B971F4756E500C9595A /* Weather */,
@@ -145,6 +148,7 @@
 		4B450B971F4756E500C9595A /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				4BB081241F487ACD0091B8CA /* README.md */,
 				4B751F221F48617B00BDCFCF /* Localizable.strings */,
 				4B751F1D1F48617A00BDCFCF /* InfoPlist.strings */,
 				4B450B9B1F4756E500C9595A /* ICAppDelegate.h */,
